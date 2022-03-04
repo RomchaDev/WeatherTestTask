@@ -35,6 +35,7 @@ object Versions {
     const val retrofit = "2.9.0"
     const val converterGson = "2.9.0"
     const val adapterCoroutines = "0.9.2"
+    const val interceptor = "3.12.1"
 
     //Koin
     const val koinCore = "2.2.3"
@@ -85,6 +86,9 @@ object Retrofit {
     const val converterGson = "com.squareup.retrofit2:converter-gson:${Versions.converterGson}"
     const val adapterCoroutines =
         "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:${Versions.adapterCoroutines}"
+    const val interceptor =
+        "com.squareup.okhttp3:logging-interceptor:${Versions.interceptor}"
+
 }
 
 object Koin {
