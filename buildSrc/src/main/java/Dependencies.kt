@@ -35,6 +35,7 @@ object Versions {
     const val retrofit = "2.9.0"
     const val converterGson = "2.9.0"
     const val adapterCoroutines = "0.9.2"
+    const val interceptor = "3.12.1"
 
     //Koin
     const val koinCore = "2.2.3"
@@ -49,6 +50,7 @@ object Versions {
     const val jUnit = "4.12"
     const val runner = "1.2.0"
     const val espressoCore = "3.2.0"
+    const val ext = "1.1.3"
 
     //Navigation
     const val navigation = "2.4.0-beta02"
@@ -84,6 +86,9 @@ object Retrofit {
     const val converterGson = "com.squareup.retrofit2:converter-gson:${Versions.converterGson}"
     const val adapterCoroutines =
         "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:${Versions.adapterCoroutines}"
+    const val interceptor =
+        "com.squareup.okhttp3:logging-interceptor:${Versions.interceptor}"
+
 }
 
 object Koin {
@@ -99,6 +104,7 @@ object Glide {
 
 object TestImpl {
     const val junit = "junit:junit:${Versions.jUnit}"
+    const val ext = "androidx.test.ext:${Versions.ext}"
     const val runner = "androidx.test:runner:${Versions.runner}"
     const val espresso = "androidx.test.espresso:espresso-core:${Versions.espressoCore}"
 }
