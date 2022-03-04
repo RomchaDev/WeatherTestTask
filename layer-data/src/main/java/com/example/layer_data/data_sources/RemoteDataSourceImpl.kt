@@ -7,7 +7,7 @@ class RemoteDataSourceImpl(
 ) : RemoteDataSource {
 
     override fun getWeatherAnswer(lat: Double, lon: Double) =
-        apiService.getUniversalAnswer(lat, lon)
+        apiService.getWeatherAnswer(lat, lon)
 
     override fun getCoordinatesAnswer(city: String) =
         apiService.getCoordinatesAnswer(city)

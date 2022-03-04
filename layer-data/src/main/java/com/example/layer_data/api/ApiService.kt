@@ -8,7 +8,7 @@ import retrofit2.http.Query
 
 interface ApiService {
     @GET("data/2.5/onecall")
-    fun getUniversalAnswer(
+    fun getWeatherAnswer(
         @Query("lat") lat: Double,
         @Query("lon") lon: Double
     ): Deferred<WeatherAnswer>
