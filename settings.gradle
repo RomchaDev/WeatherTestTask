@@ -8,3 +8,6 @@ dependencyResolutionManagement {
 }
 rootProject.name = "WeatherTestTask"
 include ':app'
+include ':layer-data'
+include ':layer-domain'
+include ':layer-presentation'
