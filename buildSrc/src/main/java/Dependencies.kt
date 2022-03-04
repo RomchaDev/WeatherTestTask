@@ -49,6 +49,7 @@ object Versions {
     const val jUnit = "4.12"
     const val runner = "1.2.0"
     const val espressoCore = "3.2.0"
+    const val ext = "1.1.3"
 
     //Navigation
     const val navigation = "2.4.0-beta02"
@@ -99,6 +100,7 @@ object Glide {
 
 object TestImpl {
     const val junit = "junit:junit:${Versions.jUnit}"
+    const val ext = "androidx.test.ext:${Versions.ext}"
     const val runner = "androidx.test:runner:${Versions.runner}"
     const val espresso = "androidx.test.espresso:espresso-core:${Versions.espressoCore}"
 }
