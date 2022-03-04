@@ -18,7 +18,7 @@ object Releases {
 object Versions {
     //Tools
     const val multidex = "2.0.1"
-    const val gradle = "7.0.3"
+    const val gradle = "7.0.4"
 
     //Design
     const val appcompat = "1.3.1"
@@ -59,6 +59,8 @@ object Versions {
 
 object Tools {
     const val multidex = "com.android.support:multidex:${Versions.multidex}"
+    const val gradle = "com.android.tools.build:gradle:${Versions.gradle}"
+    const val kotlinGradle = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.core}"
 }
 
 object Design {
