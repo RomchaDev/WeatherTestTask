@@ -16,5 +16,5 @@ interface ApiService {
     @GET("data/2.5/weather")
     fun getCoordinatesAnswer(
         @Query("q") city: String
-    ): Deferred<CoordinatesAnswer?>?
+    ): Deferred<CoordinatesAnswer>
 }
