@@ -2,6 +2,7 @@ package com.example.weathertesttask.koin.modules
 
 import com.example.layer_data.api.ApiService
 import com.example.layer_data.api.MAIN_API_URL
+import com.example.layer_data.api.MainInterceptor
 import com.example.layer_data.data_sources.RemoteDataSource
 import com.example.layer_data.data_sources.RemoteDataSourceImpl
 import com.example.layer_data.repository.CoordinatesRepositoryImpl
@@ -15,12 +16,11 @@ import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-//TODO: Add interceptor
 val retrofitModule = module {
     single {
 
         val client = OkHttpClient.Builder()
-            //.addInterceptor(MainInterceptor(get()))
+            .addInterceptor(MainInterceptor())
             .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
             .build()
 
