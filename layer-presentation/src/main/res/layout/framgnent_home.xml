@@ -1,11 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:layout_height="match_parent">
+    android:weightSum="1">
 
-    <include layout="@layout/fragment_current" />
+    <include
+        android:id="@+id/current"
+        layout="@layout/fragment_current"
+        android:layout_width="match_parent"
+        android:layout_height="500dp" />
 
-    <include layout="@layout/fragment_days" />
+    <include
+        android:id="@+id/days"
+        app:layout_constraintTop_toBottomOf="@id/current"
+        app:layout_constraintBottom_toBottomOf="parent"
+        layout="@layout/fragment_days"
+        android:layout_width="match_parent"
+        android:layout_height="0dp" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
