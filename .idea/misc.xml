@@ -4,6 +4,16 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/WeatherTestTask/app/src/main/res/layout/activity_main.xml" value="0.19270833333333334" />
+        <entry key="..\:/WeatherTestTask/layer-presentation/src/main/res/drawable/ic_cloud_rain.xml" value="0.1" />
+        <entry key="..\:/WeatherTestTask/layer-presentation/src/main/res/drawable/ic_cloudy_2.xml" value="0.1" />
+        <entry key="..\:/WeatherTestTask/layer-presentation/src/main/res/drawable/ic_day_cloudy.xml" value="0.1" />
+        <entry key="..\:/WeatherTestTask/layer-presentation/src/main/res/drawable/ic_humidity.xml" value="0.1" />
+        <entry key="..\:/WeatherTestTask/layer-presentation/src/main/res/drawable/ic_location_1.xml" value="0.1" />
+        <entry key="..\:/WeatherTestTask/layer-presentation/src/main/res/drawable/ic_location_2.xml" value="0.1" />
+        <entry key="..\:/WeatherTestTask/layer-presentation/src/main/res/drawable/ic_sunny.xml" value="0.1" />
+        <entry key="..\:/WeatherTestTask/layer-presentation/src/main/res/drawable/ic_temp.xml" value="0.1" />
+        <entry key="..\:/WeatherTestTask/layer-presentation/src/main/res/drawable/ic_wind.xml" value="0.1" />
+        <entry key="..\:/WeatherTestTask/layer-presentation/src/main/res/layout/fragment_current.xml" value="0.17135416666666667" />
       </map>
     </option>
   </component>
