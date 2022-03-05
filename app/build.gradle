@@ -28,4 +28,10 @@ dependencies {
     //Test
     testImplementation TestImpl.junit
     androidTestImplementation TestImpl.ext
+
+    //Retrofit
+    implementation Retrofit.retrofit
+    implementation Retrofit.converterGson
+    implementation Retrofit.adapterCoroutines
+    implementation Retrofit.interceptor
 }
