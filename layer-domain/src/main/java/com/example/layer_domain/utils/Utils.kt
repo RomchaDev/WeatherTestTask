@@ -4,5 +4,5 @@ import kotlin.math.roundToInt
 
 fun Double.toCelsius(): String {
     val c = (this - 273).roundToInt()
-    return "$c'"
+    return "$c°"
 }

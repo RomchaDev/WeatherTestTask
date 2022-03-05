@@ -14,6 +14,7 @@
         <entry key="..\:/WeatherTestTask/layer-presentation/src/main/res/drawable/ic_temp.xml" value="0.1" />
         <entry key="..\:/WeatherTestTask/layer-presentation/src/main/res/drawable/ic_wind.xml" value="0.1" />
         <entry key="..\:/WeatherTestTask/layer-presentation/src/main/res/layout/fragment_current.xml" value="0.264" />
+        <entry key="..\:/WeatherTestTask/layer-presentation/src/main/res/layout/fragment_hour.xml" value="0.176" />
       </map>
     </option>
   </component>

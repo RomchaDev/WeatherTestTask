@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="location">Location</string>
-    <string name="current_weather">Current weather</string>
+    <string name="weather">Weather</string>
     <string name="temperature">temperature</string>
     <string name="wind_speed">Wind speed</string>
     <string name="humidity">Humidity</string>
