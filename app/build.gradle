@@ -13,6 +13,9 @@ dependencies {
     //Navigation
     implementation Navigation.navigationFragment
 
+    //Multidex
+    implementation Tools.multidex
+
     //Kotlin
     implementation Kotlin.core
 
