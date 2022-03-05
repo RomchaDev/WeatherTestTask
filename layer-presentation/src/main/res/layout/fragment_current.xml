@@ -163,6 +163,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/hours"
             android:layout_width="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:layout_height="100dp"
             android:orientation="horizontal"
             tools:listitem="@layout/fragment_hour" />
