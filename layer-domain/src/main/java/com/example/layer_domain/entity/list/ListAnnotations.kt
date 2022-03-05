@@ -16,7 +16,7 @@ annotation class ListItemId
 
 /**
  * Method for comparing two objects by the fields that
- * are annotated with the annotation witch was given in parameters
+ * are annotated with the annotation witch is given in parameters
  *
  * @param annotationClass - annotation, by which objects should be compared
  * */
