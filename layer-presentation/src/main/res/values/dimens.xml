@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="icon_small">30dp</dimen>
+    <dimen name="margin_small_0">4dp</dimen>
+    <dimen name="margin_medium_0">16dp</dimen>
+    <dimen name="small_header_text_size">24sp</dimen>
+    <dimen name="small_hint_text_size">14sp</dimen>
+    <dimen name="image_size_big">170dp</dimen>
+    <dimen name="margin_medium_1">32dp</dimen>
+    <dimen name="margin_small_1">8dp</dimen>
+    <dimen name="medium_text">18sp</dimen>
+    <dimen name="margin_medium_2">40dp</dimen>
+</resources>

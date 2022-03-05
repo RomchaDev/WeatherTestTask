@@ -1,6 +1,151 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <data>
+        <variable
+            name="current"
+            type="com.example.layer_presentation.main.home.list_items.CurrentListItem" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:background="@color/blue_dark">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/ab_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/iv_location_1"
+                    android:layout_width="@dimen/icon_small"
+                    android:layout_height="@dimen/icon_small"
+                    android:layout_marginStart="@dimen/margin_medium_0"
+                    android:layout_marginTop="@dimen/margin_medium_0"
+                    android:contentDescription="@string/location"
+                    android:src="@drawable/ic_location_1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:text="@{current.city}"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_small_0"
+                    android:textColor="@color/white_dark"
+                    android:textSize="@dimen/small_header_text_size"
+                    app:layout_constraintStart_toEndOf="@id/iv_location_1"
+                    app:layout_constraintTop_toTopOf="@id/iv_location_1"
+                    tools:text="Запорожье" />
+
+                <ImageView
+                    android:layout_width="@dimen/icon_small"
+                    android:layout_height="@dimen/icon_small"
+                    android:layout_marginEnd="@dimen/margin_medium_0"
+                    android:contentDescription="@string/location"
+                    android:src="@drawable/ic_location_2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/iv_location_1" />
+
+                <TextView
+                    android:text="@{current.date}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_small_0"
+                    android:layout_marginTop="@dimen/margin_medium_0"
+                    android:textColor="@color/white_dark"
+                    android:textSize="@dimen/small_hint_text_size"
+                    app:layout_constraintStart_toStartOf="@id/iv_location_1"
+                    app:layout_constraintTop_toBottomOf="@id/iv_location_1"
+                    tools:text="ПТ, 20 июля" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <ImageView
+            android:id="@+id/iv_main_weather"
+            android:layout_width="@dimen/image_size_big"
+            android:layout_height="@dimen/image_size_big"
+            android:layout_marginStart="@dimen/margin_medium_1"
+            android:layout_marginTop="@dimen/margin_medium_1"
+            android:contentDescription="@string/current_weather"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ab_location"
+            tools:src="@drawable/ic_cloudy_1" />
+
+        <ImageView
+            android:id="@+id/iv_temperature"
+            android:layout_width="@dimen/icon_small"
+            android:layout_height="@dimen/icon_small"
+            android:layout_marginStart="@dimen/margin_medium_2"
+            android:layout_marginTop="@dimen/margin_medium_1"
+            android:contentDescription="@string/temperature"
+            android:src="@drawable/ic_temp"
+            app:layout_constraintStart_toEndOf="@id/iv_main_weather"
+            app:layout_constraintTop_toTopOf="@id/iv_main_weather" />
+
+        <TextView
+            android:text="@{current.day.temp.toString()}"
+            android:id="@+id/tv_temperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_small_1"
+            android:textColor="@color/white_dark"
+            android:textSize="@dimen/medium_text"
+            app:layout_constraintStart_toEndOf="@id/iv_temperature"
+            app:layout_constraintTop_toTopOf="@id/iv_temperature"
+            tools:text="27'/19'" />
+
+        <ImageView
+            android:id="@+id/iv_humidity"
+            android:layout_width="@dimen/icon_small"
+            android:layout_height="@dimen/icon_small"
+            android:layout_marginTop="8dp"
+            android:contentDescription="@string/humidity"
+            android:src="@drawable/ic_humidity"
+            app:layout_constraintStart_toStartOf="@id/iv_temperature"
+            app:layout_constraintTop_toBottomOf="@id/iv_temperature" />
+
+        <TextView
+            android:id="@+id/tv_humidity"
+            android:text="@{Integer.toString(current.day.humidity) + '%'}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white_dark"
+            android:textSize="@dimen/medium_text"
+            app:layout_constraintStart_toStartOf="@id/tv_temperature"
+            app:layout_constraintTop_toTopOf="@id/iv_humidity"
+            tools:text="33%" />
+
+        <ImageView
+            android:id="@+id/iv_wind"
+            android:layout_width="@dimen/icon_small"
+            android:layout_height="@dimen/icon_small"
+            android:layout_marginTop="8dp"
+            android:contentDescription="@string/wind_speed"
+            android:src="@drawable/ic_wind"
+            app:layout_constraintStart_toStartOf="@id/iv_temperature"
+            app:layout_constraintTop_toBottomOf="@id/iv_humidity" />
+
+        <TextView
+            android:id="@+id/tv_wind"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white_dark"
+            android:textSize="@dimen/medium_text"
+            app:layout_constraintStart_toStartOf="@id/tv_temperature"
+            app:layout_constraintTop_toTopOf="@id/iv_wind"
+            tools:text="5м/с"
+            android:text="@{Double.toString(current.day.windSpeed) + @string/speed_unit}" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

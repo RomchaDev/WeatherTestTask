@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="color_white_dark">#FCFEFB</color>
+    <color name="white_dark">#FCFEFB</color>
+    <color name="blue_light">#5B9FF0</color>
+    <color name="blue_dark">#4990E2</color>
 </resources>

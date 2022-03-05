@@ -104,7 +104,7 @@ object Glide {
 
 object TestImpl {
     const val junit = "junit:junit:${Versions.jUnit}"
-    const val ext = "androidx.test.ext:${Versions.ext}"
+    const val ext = "androidx.test.ext:junit:${Versions.ext}"
     const val runner = "androidx.test:runner:${Versions.runner}"
     const val espresso = "androidx.test.espresso:espresso-core:${Versions.espressoCore}"
 }

@@ -7,8 +7,7 @@ class WeatherMapper : Mapper<WeatherAnswer, WeatherEntity> {
     override fun map(from: WeatherAnswer) = with(from) {
         WeatherEntity(
             daily = daily,
-            hourly = hourly,
-            current = current
+            hourly = hourly
         )
     }
 }
