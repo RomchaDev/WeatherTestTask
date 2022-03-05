@@ -2,5 +2,7 @@ package com.example.layer_domain.entity.weather
 
 data class Day(
     val temp: Temp,
-    val weathers: List<Weather>
+    val humidity: Int,
+    val windSpeed: Double,
+    val weather: List<Weather>
 )

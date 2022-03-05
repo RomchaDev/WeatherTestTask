@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="location">Location</string>
+    <string name="weather">Weather</string>
+    <string name="temperature">temperature</string>
+    <string name="wind_speed">Wind speed</string>
+    <string name="humidity">Humidity</string>
+    <string name="speed_unit">м/с</string>
+</resources>
