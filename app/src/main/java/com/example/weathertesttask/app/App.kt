@@ -17,7 +17,8 @@ class App : MultiDexApplication() {
                 useCaseModule,
                 dataSourceModule,
                 repositoryModule,
-                retrofitModule
+                retrofitModule,
+                iconModule
             )
         }
     }

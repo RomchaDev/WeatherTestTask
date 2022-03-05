@@ -8,6 +8,10 @@
         <variable
             name="current"
             type="com.example.layer_presentation.main.home.list_items.CurrentListItem" />
+
+        <variable
+            name="iconGetter"
+            type="com.example.layer_presentation.core.sky_state.IconFromIdGetter" />
     </data>
 
     <LinearLayout
@@ -84,6 +88,7 @@
                 android:layout_marginStart="@dimen/margin_medium_1"
                 android:layout_marginTop="@dimen/margin_medium_1"
                 android:contentDescription="@string/weather"
+                android:src="@{iconGetter.get(current.day.weather[0].id)}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/ab_location"
                 tools:src="@drawable/ic_cloudy_1" />
@@ -156,9 +161,9 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:orientation="horizontal"
-            tools:listitem="@layout/fragment_hour"
             android:layout_width="match_parent"
-            android:layout_height="100dp" />
+            android:layout_height="100dp"
+            android:orientation="horizontal"
+            tools:listitem="@layout/fragment_hour" />
     </LinearLayout>
 </layout>

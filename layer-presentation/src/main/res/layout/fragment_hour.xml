@@ -1,36 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="70dp"
-    android:layout_height="match_parent"
-    android:background="@color/blue_light"
-    android:orientation="vertical">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:id='@+id/list_text_top'
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textColor="@color/white_dark"
-        android:textSize="@dimen/medium_text"
-        tools:text="00:00" />
+    <data>
 
-    <ImageView
-        android:id='@+id/main_list_image'
-        android:layout_marginTop="@dimen/margin_small_1"
-        android:layout_marginBottom="@dimen/margin_small_1"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:contentDescription="@string/weather"
-        android:src='@drawable/ic_sunny' />
+        <import type="com.example.layer_domain.utils.UtilsKt" />
 
-    <TextView
-        android:id="@+id/list_text_bottom"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textColor="@color/white_dark"
-        android:textSize="@dimen/medium_text"
-        tools:text='0 C' />
+        <variable
+            name="hourListItem"
+            type="com.example.layer_presentation.main.home.list_items.HourListItem" />
 
-</LinearLayout>
+        <variable
+            name="iconGetter"
+            type="com.example.layer_presentation.core.sky_state.IconFromIdGetter" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="70dp"
+        android:layout_height="match_parent"
+        android:background="@color/blue_light"
+        android:orientation="vertical">
+
+        <TextView
+            android:id='@+id/list_text_top'
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@{hourListItem.time}"
+            android:textColor="@color/white_dark"
+            android:textSize="@dimen/medium_text"
+            tools:text="00:00" />
+
+        <ImageView
+            android:id='@+id/main_list_image'
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="@dimen/margin_small_1"
+            android:layout_marginBottom="@dimen/margin_small_1"
+            android:contentDescription="@string/weather"
+            tools:src="@drawable/ic_sunny"
+            android:src="@{iconGetter.get(hourListItem.hour.weather[0].id)}" />
+
+        <TextView
+            android:id="@+id/list_text_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@{UtilsKt.toCelsius(hourListItem.hour.temp)"
+            android:textColor="@color/white_dark"
+            android:textSize="@dimen/medium_text"
+            tools:text='0°C' />
+
+    </LinearLayout>
+</layout>

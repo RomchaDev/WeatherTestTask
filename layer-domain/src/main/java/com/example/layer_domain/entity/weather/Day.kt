@@ -4,5 +4,5 @@ data class Day(
     val temp: Temp,
     val humidity: Int,
     val windSpeed: Double,
-    val weathers: List<Weather>
+    val weather: List<Weather>
 )
