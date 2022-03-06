@@ -16,27 +16,32 @@ class HomeViewModel(
 ) : BaseViewModel<HomeStateEntity>() {
 
     private var current: DayListItem? = null
+    private var dayList: List<DayListItem>? = null
+    private var hourList: List<HourListItem>? = null
 
     override fun onViewInit() {
         runAsync {
             mSharedFlow.emit(AppState.Loading())
 
-            val weatherEntity = getWeatherUseCase.execute(DEFAULT_LOCATION)
+            if (current == null || dayList == null || hourList == null) {
+                val weatherEntity = getWeatherUseCase.execute(DEFAULT_LOCATION)
 
-            val days = prepareDays(weatherEntity)
-            val hours = prepareHours(weatherEntity)
-            val current = current ?: run {
-                days[0].isSelected = true
-                makeFirstCurrent(days)
+                dayList = prepareDays(weatherEntity)
+                hourList = prepareHours(weatherEntity)
+
+                dayList?.get(0)?.isSelected = true
+                current = dayList?.get(0)
             }
 
-            val homeStateEntity = HomeStateEntity(current, days, hours)
+            val homeStateEntity = HomeStateEntity(dayWithFullDate(current!!), dayList, hourList)
 
             mSharedFlow.emit(AppState.Success(homeStateEntity))
         }
     }
 
-    private fun makeFirstCurrent(days: MutableList<DayListItem>) = getUpdatedCurrent(days[0])
+    private fun dayWithFullDate(day: DayListItem) =
+        day.copy(dayStr = timeWorker.getDay(day.day.getDate()))
+
 
     private fun prepareHours(weatherEntity: WeatherEntity) =
         weatherEntity.hourly.map { hour ->
@@ -56,23 +61,33 @@ class HomeViewModel(
         }.toMutableList()
 
     fun itemClicked(item: DayListItem) {
-        item.isSelected = true
-        current?.isSelected = false
-        current = getUpdatedCurrent(item)
         runAsync {
-            mSharedFlow.emit(AppState.Success(HomeStateEntity(current, null, null)))
+            if (!item.isSelected && current != null) {
+                dayList?.let {
+                    val new = item.copy(isSelected = true)
+                    val newPos = dayList!!.lastIndexOf(item)
+
+                    val prev = current!!.copy(isSelected = false)
+                    val prevPos = dayList!!.lastIndexOf(current)
+
+                    val newList = mutableListOf<DayListItem>()
+                    newList.addAll(dayList!!)
+
+                    newList[prevPos] = prev
+                    newList[newPos] = new
+
+                    current = new
+                    mSharedFlow.emit(
+                        AppState.Success(
+                            HomeStateEntity(dayWithFullDate(current!!), newList, null)
+                        )
+                    )
+
+                    dayList = newList
+                }
+            }
         }
     }
-
-    private fun getUpdatedCurrent(item: DayListItem) =
-        with(item) {
-            DayListItem(
-                dayStr = timeWorker.getDay(day.getDate()),
-                city = city,
-                day = day,
-                isSelected = true
-            )
-        }
 
     companion object {
         private const val DEFAULT_LOCATION = "Запорожье"

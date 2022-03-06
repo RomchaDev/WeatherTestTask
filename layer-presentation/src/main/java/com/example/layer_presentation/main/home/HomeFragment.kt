@@ -22,23 +22,27 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeStateEntity, HomeView
     private val iconGetter: IconFromIdGetter by inject()
     private var selectedDayLayout: View? = null
 
+    private var daysAdapter: MainListAdapter<DayListItem>? = null
+    private var hoursAdapter: MainListAdapter<HourListItem>? = null
+
     override fun renderSuccess(data: HomeStateEntity) {
         super.renderSuccess(data)
         binding.current.current = data.current
         binding.current.iconGetter = iconGetter
-        initLists(data.days, data.hours)
+        processLists(data.days, data.hours)
     }
 
-    private fun initLists(
+    private fun processLists(
         days: List<DayListItem>?,
         hours: List<HourListItem>?
     ) {
         hours?.let {
-            initHoursList(hours)
+            hoursAdapter?.submitList(hours) ?: initHoursList(hours)
+
         }
 
         days?.let {
-            initDaysList(days)
+            daysAdapter?.submitList(days) ?: initDaysList(days)
         }
     }
 
@@ -49,24 +53,16 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeStateEntity, HomeView
             binding.setVariable(BR.iconGetter, iconGetter)
 
             setSelected(item.isSelected, binding.root)
-            if (item.isSelected) selectedDayLayout = binding.root
+            //if (item.isSelected) selectedDayLayout = binding.root
 
-            binding.root.setOnClickListener { view ->
-                if (!item.isSelected) {
-                    setSelected(true, view)
-
-                    selectedDayLayout?.let {
-                        setSelected(false, it)
-                        selectedDayLayout = view
-                    }
-                }
-
+            binding.root.setOnClickListener {
                 viewModel.itemClicked(item)
             }
         }
 
         val rv = binding.days.rvDays
 
+        daysAdapter = adapter
         rv.adapter = adapter
         adapter.submitList(days)
     }
@@ -86,6 +82,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeStateEntity, HomeView
             binding.setVariable(BR.iconGetter, iconGetter)
         }
 
+        hoursAdapter = adapter
         binding.current.rvHours.adapter = adapter
         adapter.submitList(hours)
     }
