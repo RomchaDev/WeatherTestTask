@@ -23,6 +23,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeStateEntity, HomeView
     override fun renderSuccess(data: HomeStateEntity) {
         super.renderSuccess(data)
         binding.current?.current = data.current
+        binding.current?.iconGetter = iconGetter
         initLists(data.days, data.hours)
     }
 

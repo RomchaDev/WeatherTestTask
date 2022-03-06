@@ -26,13 +26,10 @@
             app:layout_constraintBottom_toTopOf="@id/rv_hours"
             app:layout_constraintTop_toTopOf="parent">
 
-            <com.google.android.material.appbar.AppBarLayout
-                android:id="@+id/ab_location"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="parent">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cv_location"
+                    app:layout_constraintTop_toTopOf="parent"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
@@ -81,7 +78,6 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-            </com.google.android.material.appbar.AppBarLayout>
 
             <ImageView
                 android:id="@+id/iv_main_weather"
@@ -92,7 +88,7 @@
                 android:contentDescription="@string/weather"
                 android:src="@{iconGetter.get(current.day.weather[0].id)}"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/ab_location"
+                app:layout_constraintTop_toBottomOf="@id/cv_location"
                 tools:src="@drawable/ic_cloudy_1" />
 
             <ImageView

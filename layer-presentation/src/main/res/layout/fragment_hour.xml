@@ -46,7 +46,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@{UtilsKt.toCelsius(data.hour.temp)"
+            android:text="@{UtilsKt.toCelsius(data.hour.temp)}"
             android:textColor="@color/white_dark"
             android:textSize="@dimen/medium_text"
             tools:text='0°C' />
