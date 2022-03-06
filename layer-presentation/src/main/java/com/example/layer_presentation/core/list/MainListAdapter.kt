@@ -7,12 +7,13 @@ import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.layer_domain.entity.list.ListItem
+import com.example.layer_presentation.BR
 
 /**
  * The adapter that has to be used for the each recycler view in app
  *
  * @param itemLayoutId - the map in which should be presented item layouts and
- * their view types.
+ * their view types. (view types are keys, layouts are values)
  *
  * @param bind - the code, that should be executed when the view is bound to
  * the viewHolder
@@ -33,7 +34,7 @@ open class MainListAdapter<I : ListItem<I>>(
          * @param data - data that will be injected into xml
          * */
         fun bind(data: I) {
-           //Todo binding.setVariable(BR.data, data)
+            binding.setVariable(BR.data, data)
             bind?.invoke(binding, data)
 /*            val subClasses = data::class.sealedSubclasses
             val subClassFound = subClasses.find { it.isInstance(data) }
