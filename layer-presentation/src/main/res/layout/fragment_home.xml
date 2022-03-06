@@ -16,11 +16,11 @@
 
         <include
             android:id="@+id/days"
-            app:layout_constraintTop_toBottomOf="@id/current"
-            app:layout_constraintBottom_toBottomOf="parent"
             layout="@layout/fragment_days"
             android:layout_width="match_parent"
-            android:layout_height="0dp" />
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/current" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

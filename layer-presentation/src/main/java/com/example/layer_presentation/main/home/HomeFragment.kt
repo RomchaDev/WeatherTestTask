@@ -22,8 +22,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeStateEntity, HomeView
 
     override fun renderSuccess(data: HomeStateEntity) {
         super.renderSuccess(data)
-        binding.current?.current = data.current
-        binding.current?.iconGetter = iconGetter
+        binding.current.current = data.current
+        binding.current.iconGetter = iconGetter
         initLists(data.days, data.hours)
     }
 
@@ -31,12 +31,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeStateEntity, HomeView
         days: List<DayListItem>,
         hours: List<HourListItem>
     ) {
-        binding.days?.rvDays?.let { rv ->
+        binding.days.rvDays.let { rv ->
             val adapter = initList<DayListItem>(R.layout.fragment_day, rv)
             adapter.submitList(days)
         }
 
-        binding.current?.rvHours?.let { rv ->
+        binding.current.rvHours.let { rv ->
             val adapter = initList<HourListItem>(R.layout.fragment_hour, rv)
             adapter.submitList(hours)
         }
