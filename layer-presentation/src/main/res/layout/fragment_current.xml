@@ -7,7 +7,7 @@
 
         <variable
             name="current"
-            type="com.example.layer_presentation.main.home.list_items.CurrentListItem" />
+            type="com.example.layer_presentation.main.home.list_items.DayListItem" />
 
         <variable
             name="iconGetter"
@@ -72,7 +72,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/margin_small_0"
                         android:layout_marginTop="@dimen/margin_medium_0"
-                        android:text="@{current.date}"
+                        android:text="@{current.dayStr}"
                         android:textColor="@color/white_dark"
                         android:textSize="@dimen/small_hint_text_size"
                         app:layout_constraintStart_toStartOf="@id/iv_location_1"

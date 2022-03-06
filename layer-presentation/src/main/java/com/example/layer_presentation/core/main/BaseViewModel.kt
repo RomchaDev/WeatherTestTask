@@ -1,6 +1,7 @@
 package com.example.layer_presentation.core.main
 
 import androidx.lifecycle.ViewModel
+import com.example.layer_domain.entity.AppStateEntity
 import com.example.layer_presentation.core.navigation.AppNavigator
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.BufferOverflow

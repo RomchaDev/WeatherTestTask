@@ -22,6 +22,7 @@ dependencies {
     //Koin
     implementation Koin.koinCore
     implementation Koin.koinAndroid
+    implementation Koin.koinViewModel
 
     //Design
     implementation Design.appcompat

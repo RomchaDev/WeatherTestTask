@@ -7,12 +7,18 @@ dependencies {
 
     //Project
     implementation project(Modules.layerDomain)
+    implementation project(Modules.layerData)
 
     //Navigation
     implementation Navigation.navigationFragment
 
     //Kotlin
     implementation Kotlin.core
+
+    //Koin
+    implementation Koin.koinCore
+    implementation Koin.koinAndroid
+    implementation Koin.koinViewModel
 
     //Design
     implementation Design.appcompat

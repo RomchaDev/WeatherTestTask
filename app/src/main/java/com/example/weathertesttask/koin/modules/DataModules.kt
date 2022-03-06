@@ -7,6 +7,8 @@ import com.example.layer_data.data_sources.RemoteDataSource
 import com.example.layer_data.data_sources.RemoteDataSourceImpl
 import com.example.layer_data.repository.CoordinatesRepositoryImpl
 import com.example.layer_data.repository.WeatherRepositoryImpl
+import com.example.layer_data.time.MainTimeWorker
+import com.example.layer_data.time.TimeWorker
 import com.example.layer_domain.boundaries.CoordinatesRepository
 import com.example.layer_domain.boundaries.WeatherRepository
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
@@ -40,4 +42,8 @@ val dataSourceModule = module {
 val repositoryModule = module {
     single<WeatherRepository> { WeatherRepositoryImpl(get(), get()) }
     single<CoordinatesRepository> { CoordinatesRepositoryImpl(get()) }
+}
+
+val timeModule = module {
+    single<TimeWorker> { MainTimeWorker() }
 }

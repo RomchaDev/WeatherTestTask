@@ -1,5 +1,7 @@
 package com.example.layer_presentation.core.main
 
+import com.example.layer_domain.entity.AppStateEntity
+
 /**
  * Represents all possible states of ui.
  * */
