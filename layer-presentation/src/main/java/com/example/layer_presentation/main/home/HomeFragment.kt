@@ -1,5 +1,6 @@
 package com.example.layer_presentation.main.home
 
+import android.os.Bundle
 import android.view.View
 import androidx.core.content.ContextCompat
 import com.example.layer_domain.entity.list.ListItem
@@ -20,7 +21,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeStateEntity, HomeView
 
     override val viewModel: HomeViewModel by viewModel()
     private val iconGetter: IconFromIdGetter by inject()
-    private var selectedDayLayout: View? = null
 
     private var daysAdapter: MainListAdapter<DayListItem>? = null
     private var hoursAdapter: MainListAdapter<HourListItem>? = null
@@ -30,6 +30,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeStateEntity, HomeView
         binding.current.current = data.current
         binding.current.iconGetter = iconGetter
         processLists(data.days, data.hours)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.current.ivFindMyLocation.setOnClickListener {
+            viewModel.findMyLocationPressed()
+        }
     }
 
     private fun processLists(
@@ -53,7 +60,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeStateEntity, HomeView
             binding.setVariable(BR.iconGetter, iconGetter)
 
             setSelected(item.isSelected, binding.root)
-            //if (item.isSelected) selectedDayLayout = binding.root
 
             binding.root.setOnClickListener {
                 viewModel.itemClicked(item)

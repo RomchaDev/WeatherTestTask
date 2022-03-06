@@ -27,56 +27,57 @@
             app:layout_constraintTop_toTopOf="parent">
 
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/cv_location"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cv_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent">
 
-                    <ImageView
-                        android:id="@+id/iv_location_1"
-                        android:layout_width="@dimen/icon_small"
-                        android:layout_height="@dimen/icon_small"
-                        android:layout_marginStart="@dimen/margin_medium_0"
-                        android:layout_marginTop="@dimen/margin_medium_0"
-                        android:contentDescription="@string/location"
-                        android:src="@drawable/ic_location_1"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                <ImageView
+                    android:id="@+id/iv_location_1"
+                    android:layout_width="@dimen/icon_small"
+                    android:layout_height="@dimen/icon_small"
+                    android:layout_marginStart="@dimen/margin_medium_0"
+                    android:layout_marginTop="@dimen/margin_medium_0"
+                    android:contentDescription="@string/location"
+                    android:src="@drawable/ic_location_1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                    <com.google.android.material.textview.MaterialTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/margin_small_0"
-                        android:text="@{current.city}"
-                        android:textColor="@color/white_dark"
-                        android:textSize="@dimen/small_header_text_size"
-                        app:layout_constraintStart_toEndOf="@id/iv_location_1"
-                        app:layout_constraintTop_toTopOf="@id/iv_location_1"
-                        tools:text="Запорожье" />
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_small_0"
+                    android:text="@{current.city}"
+                    android:textColor="@color/white_dark"
+                    android:textSize="@dimen/small_header_text_size"
+                    app:layout_constraintStart_toEndOf="@id/iv_location_1"
+                    app:layout_constraintTop_toTopOf="@id/iv_location_1"
+                    tools:text="Запорожье" />
 
-                    <ImageView
-                        android:layout_width="@dimen/icon_small"
-                        android:layout_height="@dimen/icon_small"
-                        android:layout_marginEnd="@dimen/margin_medium_0"
-                        android:contentDescription="@string/location"
-                        android:src="@drawable/ic_location_2"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@id/iv_location_1" />
+                <ImageView
+                    android:id="@+id/iv_find_my_location"
+                    android:layout_width="@dimen/icon_small"
+                    android:layout_height="@dimen/icon_small"
+                    android:layout_marginEnd="@dimen/margin_medium_0"
+                    android:contentDescription="@string/location"
+                    android:src="@drawable/ic_location_2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/iv_location_1" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/margin_small_0"
-                        android:layout_marginTop="@dimen/margin_medium_0"
-                        android:text="@{current.dayStr}"
-                        android:textColor="@color/white_dark"
-                        android:textSize="@dimen/small_hint_text_size"
-                        app:layout_constraintStart_toStartOf="@id/iv_location_1"
-                        app:layout_constraintTop_toBottomOf="@id/iv_location_1"
-                        tools:text="ПТ, 20 июля" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_small_0"
+                    android:layout_marginTop="@dimen/margin_medium_0"
+                    android:text="@{current.dayStr}"
+                    android:textColor="@color/white_dark"
+                    android:textSize="@dimen/small_hint_text_size"
+                    app:layout_constraintStart_toStartOf="@id/iv_location_1"
+                    app:layout_constraintTop_toBottomOf="@id/iv_location_1"
+                    tools:text="ПТ, 20 июля" />
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
 
             <ImageView
