@@ -5,12 +5,14 @@ import com.example.layer_data.api.MAIN_API_URL
 import com.example.layer_data.api.MainInterceptor
 import com.example.layer_data.data_sources.RemoteDataSource
 import com.example.layer_data.data_sources.RemoteDataSourceImpl
+import com.example.layer_data.location.LocationWorker
 import com.example.layer_data.repository.CoordinatesRepositoryImpl
 import com.example.layer_data.repository.WeatherRepositoryImpl
 import com.example.layer_data.time.MainTimeWorker
 import com.example.layer_data.time.TimeWorker
 import com.example.layer_domain.boundaries.CoordinatesRepository
 import com.example.layer_domain.boundaries.WeatherRepository
+import com.example.weathertesttask.location.AndroidLocationWorker
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.GsonBuilder
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
@@ -51,4 +53,9 @@ val repositoryModule = module {
 
 val timeModule = module {
     single<TimeWorker> { MainTimeWorker() }
+}
+
+val locationModule = module {
+    single { AndroidLocationWorker() }
+    factory<LocationWorker> { get<AndroidLocationWorker>() }
 }
