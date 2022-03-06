@@ -14,5 +14,5 @@ val mapperModule = module {
 }
 
 val useCaseModule = module {
-    single<UseCase<WeatherEntity>> { GetWeatherUseCase(get(), get()) }
+    single { GetWeatherUseCase(get(), get()) }
 }

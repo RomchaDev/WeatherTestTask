@@ -8,5 +8,5 @@ class CoordinatesRepositoryImpl(
     private val remoteDataSource: RemoteDataSource
 ) : CoordinatesRepository {
     override suspend fun getCoordinates(city: String): Coordinates =
-        remoteDataSource.getCoordinatesAnswer(city).await().coordinates
+        remoteDataSource.getCoordinatesAnswer(city).await().coord
 }

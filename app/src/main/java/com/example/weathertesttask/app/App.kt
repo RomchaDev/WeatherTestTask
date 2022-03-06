@@ -18,7 +18,8 @@ class App : MultiDexApplication() {
                 dataSourceModule,
                 repositoryModule,
                 retrofitModule,
-                iconModule
+                iconModule,
+                timeModule
             )
         }
     }
