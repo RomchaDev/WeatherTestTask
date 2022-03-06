@@ -81,10 +81,9 @@
 
             <ImageView
                 android:id="@+id/iv_main_weather"
-                android:layout_width="@dimen/image_size_big"
-                android:layout_height="@dimen/image_size_big"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
                 android:layout_marginStart="@dimen/margin_medium_1"
-                android:layout_marginTop="@dimen/margin_medium_1"
                 android:contentDescription="@string/weather"
                 android:src="@{iconGetter.get(current.day.weather[0].id)}"
                 app:layout_constraintStart_toStartOf="parent"

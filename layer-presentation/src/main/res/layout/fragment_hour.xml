@@ -25,6 +25,7 @@
             android:id='@+id/list_text_top'
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small_0"
             android:gravity="center"
             android:text="@{data.time}"
             android:textColor="@color/white_dark"
@@ -46,8 +47,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@{UtilsKt.toCelsius(data.hour.temp)"
+            android:text="@{UtilsKt.toCelsius(data.hour.temp)}"
             android:textColor="@color/white_dark"
+            android:layout_marginBottom="@dimen/margin_small_0"
             android:textSize="@dimen/medium_text"
             tools:text='0°C' />
 

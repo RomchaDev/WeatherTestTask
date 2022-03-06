@@ -1,8 +1,13 @@
 package com.example.layer_presentation.main.home.list_items
 
+import com.example.layer_domain.entity.list.Content
+import com.example.layer_domain.entity.list.ListItem
+import com.example.layer_domain.entity.list.ListItemId
 import com.example.layer_domain.entity.weather.Day
 
 data class DayListItem(
-    val dayStr: String,
-    val day: Day
-)
+    @ListItemId var dayStr: String,
+    val city: String,
+    val day: Day,
+    @Content var isSelected: Boolean = false
+) : ListItem<DayListItem>

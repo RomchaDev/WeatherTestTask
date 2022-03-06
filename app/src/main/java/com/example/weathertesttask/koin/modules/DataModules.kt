@@ -7,8 +7,12 @@ import com.example.layer_data.data_sources.RemoteDataSource
 import com.example.layer_data.data_sources.RemoteDataSourceImpl
 import com.example.layer_data.repository.CoordinatesRepositoryImpl
 import com.example.layer_data.repository.WeatherRepositoryImpl
+import com.example.layer_data.time.MainTimeWorker
+import com.example.layer_data.time.TimeWorker
 import com.example.layer_domain.boundaries.CoordinatesRepository
 import com.example.layer_domain.boundaries.WeatherRepository
+import com.google.gson.FieldNamingPolicy
+import com.google.gson.GsonBuilder
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -24,9 +28,12 @@ val retrofitModule = module {
             .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
             .build()
 
+        val gson = GsonBuilder()
+            .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES).create()
+
         Retrofit.Builder()
             .baseUrl(MAIN_API_URL)
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create(gson))
             .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .client(client)
             .build().create(ApiService::class.java)
@@ -40,4 +47,8 @@ val dataSourceModule = module {
 val repositoryModule = module {
     single<WeatherRepository> { WeatherRepositoryImpl(get(), get()) }
     single<CoordinatesRepository> { CoordinatesRepositoryImpl(get()) }
+}
+
+val timeModule = module {
+    single<TimeWorker> { MainTimeWorker() }
 }
