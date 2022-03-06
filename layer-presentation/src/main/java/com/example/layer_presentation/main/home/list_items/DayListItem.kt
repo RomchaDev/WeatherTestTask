@@ -5,7 +5,8 @@ import com.example.layer_domain.entity.list.ListItemId
 import com.example.layer_domain.entity.weather.Day
 
 data class DayListItem(
-    @ListItemId val dayStr: String,
+    @ListItemId var dayStr: String,
     val city: String,
-    val day: Day
+    val day: Day,
+    var isSelected: Boolean = false
 ) : ListItem<DayListItem>

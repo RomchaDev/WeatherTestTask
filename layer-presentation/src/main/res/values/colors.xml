@@ -5,4 +5,5 @@
     <color name="blue_dark">#4990E2</color>
     <color name="gray_dark">#353535</color>
     <color name="selection">#f3f8fe</color>
+    <color name="white">#FFFFFFFF</color>
 </resources>

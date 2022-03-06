@@ -1,6 +1,7 @@
 package com.example.layer_presentation.main.home
 
-import androidx.recyclerview.widget.RecyclerView
+import android.view.View
+import androidx.core.content.ContextCompat
 import com.example.layer_domain.entity.list.ListItem
 import com.example.layer_presentation.BR
 import com.example.layer_presentation.R
@@ -19,6 +20,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeStateEntity, HomeView
 
     override val viewModel: HomeViewModel by viewModel()
     private val iconGetter: IconFromIdGetter by inject()
+    private var selectedDayLayout: View? = null
 
     override fun renderSuccess(data: HomeStateEntity) {
         super.renderSuccess(data)
@@ -28,28 +30,63 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeStateEntity, HomeView
     }
 
     private fun initLists(
-        days: List<DayListItem>,
-        hours: List<HourListItem>
+        days: List<DayListItem>?,
+        hours: List<HourListItem>?
     ) {
-        binding.days.rvDays.let { rv ->
-            val adapter = initList<DayListItem>(R.layout.fragment_day, rv)
-            adapter.submitList(days)
+        hours?.let {
+            initHoursList(hours)
         }
 
-        binding.current.rvHours.let { rv ->
-            val adapter = initList<HourListItem>(R.layout.fragment_hour, rv)
-            adapter.submitList(hours)
+        days?.let {
+            initDaysList(days)
         }
     }
 
-    fun <T : ListItem<T>> initList(itemLayoutId: Int, rv: RecyclerView): MainListAdapter<T> {
-        val adapter = MainListAdapter<T>(
-            mapOf(ListItem.DEFAULT_ITEM_VIEW_TYPE to itemLayoutId)
+    private fun initDaysList(days: List<DayListItem>) {
+        val adapter = MainListAdapter<DayListItem>(
+            mapOf(ListItem.DEFAULT_ITEM_VIEW_TYPE to R.layout.fragment_day)
+        ) { binding, item ->
+            binding.setVariable(BR.iconGetter, iconGetter)
+
+            setSelected(item.isSelected, binding.root)
+            if (item.isSelected) selectedDayLayout = binding.root
+
+            binding.root.setOnClickListener { view ->
+                if (!item.isSelected) {
+                    setSelected(true, view)
+
+                    selectedDayLayout?.let {
+                        setSelected(false, it)
+                        selectedDayLayout = view
+                    }
+                }
+
+                viewModel.itemClicked(item)
+            }
+        }
+
+        val rv = binding.days.rvDays
+
+        rv.adapter = adapter
+        adapter.submitList(days)
+    }
+
+    private fun setSelected(isSelected: Boolean, view: View) {
+        val drawable =
+            if (isSelected) ContextCompat.getDrawable(requireContext(), R.color.selection)
+            else ContextCompat.getDrawable(requireContext(), R.color.white)
+
+        view.background = drawable
+    }
+
+    private fun initHoursList(hours: List<HourListItem>) {
+        val adapter = MainListAdapter<HourListItem>(
+            mapOf(ListItem.DEFAULT_ITEM_VIEW_TYPE to R.layout.fragment_hour)
         ) { binding, _ ->
             binding.setVariable(BR.iconGetter, iconGetter)
         }
 
-        rv.adapter = adapter
-        return adapter
+        binding.current.rvHours.adapter = adapter
+        adapter.submitList(hours)
     }
 }

@@ -15,6 +15,8 @@ class HomeViewModel(
     private val timeWorker: TimeWorker
 ) : BaseViewModel<HomeStateEntity>() {
 
+    private var current: DayListItem? = null
+
     override fun onViewInit() {
         runAsync {
             mSharedFlow.emit(AppState.Loading())
@@ -23,7 +25,10 @@ class HomeViewModel(
 
             val days = prepareDays(weatherEntity)
             val hours = prepareHours(weatherEntity)
-            val current = prepareCurrent(days)
+            val current = current ?: run {
+                days[0].isSelected = true
+                makeFirstCurrent(days)
+            }
 
             val homeStateEntity = HomeStateEntity(current, days, hours)
 
@@ -31,14 +36,7 @@ class HomeViewModel(
         }
     }
 
-    private fun prepareCurrent(days: MutableList<DayListItem>) =
-        with(days[0]) {
-            DayListItem(
-                dayStr = timeWorker.getDay(day.getDate()),
-                city = city,
-                day = day
-            )
-        }
+    private fun makeFirstCurrent(days: MutableList<DayListItem>) = getUpdatedCurrent(days[0])
 
     private fun prepareHours(weatherEntity: WeatherEntity) =
         weatherEntity.hourly.map { hour ->
@@ -56,6 +54,25 @@ class HomeViewModel(
                 day = day
             )
         }.toMutableList()
+
+    fun itemClicked(item: DayListItem) {
+        item.isSelected = true
+        current?.isSelected = false
+        current = getUpdatedCurrent(item)
+        runAsync {
+            mSharedFlow.emit(AppState.Success(HomeStateEntity(current, null, null)))
+        }
+    }
+
+    private fun getUpdatedCurrent(item: DayListItem) =
+        with(item) {
+            DayListItem(
+                dayStr = timeWorker.getDay(day.getDate()),
+                city = city,
+                day = day,
+                isSelected = true
+            )
+        }
 
     companion object {
         private const val DEFAULT_LOCATION = "Запорожье"
