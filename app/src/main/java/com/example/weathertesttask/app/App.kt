@@ -19,7 +19,8 @@ class App : MultiDexApplication() {
                 repositoryModule,
                 retrofitModule,
                 iconModule,
-                timeModule
+                timeModule,
+                locationModule
             )
         }
     }

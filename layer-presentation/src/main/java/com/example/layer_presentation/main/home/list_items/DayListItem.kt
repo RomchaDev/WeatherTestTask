@@ -8,6 +8,6 @@ import com.example.layer_domain.entity.weather.Day
 data class DayListItem(
     @ListItemId var dayStr: String,
     val city: String,
-    val day: Day,
+    @Content val day: Day,
     @Content var isSelected: Boolean = false
 ) : ListItem<DayListItem>
